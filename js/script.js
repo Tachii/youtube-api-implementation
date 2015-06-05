@@ -132,7 +132,7 @@ $(function(){
 		$('#button').html('');
 		
 		//Get Form Input Value and Define it to a value
-		var q = $('#query').val();
+		var query = $('#query').val();
 		
 		//Run Get Request on YouTube API
 		$.get(
@@ -157,7 +157,7 @@ $(function(){
 					});
 					
 					//Getting Buttons Data
-					var buttons = getButtons(prevPageToken, nextPageToken, q);
+					var buttons = getButtons(prevPageToken, nextPageToken, query);
 					
 					//Displaying Buttons
 					$('#buttons').prepend(buttons);
