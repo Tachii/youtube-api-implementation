@@ -109,6 +109,52 @@ $(function(){
 		);
 	}
 	
+	//Next Page button funciton
+	function prevPage(){
+		//Token & Query for new request, which declares what to load
+		var token = $('#prev-button').data('token');
+		var query = $('#prev-button').data('query');
+		
+		//Clear Previous Results
+		$('#results').html('');
+		$('#button').html('');
+		
+		//Get Form Input Value and Define it to a value
+		var query = $('#query').val();
+		
+		//Run Get Request on YouTube API
+		$.get(
+			"https://www.googleapis.com/youtube/v3/search",{
+					part: 'snippet, id',
+					q: query,
+					pageToken: token,
+					type:'video',
+					key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'
+				},
+				function(data){
+					var nextPageToken = data.nextPageToken;
+					var prevPageToken = data.prevPageToken;
+					console.log(data);
+					
+					//Loop to process received data
+					$.each(data.items, function(i, item){
+						//Get Output
+						var output = getOutput(item);
+						
+						//Display Results
+						$('#results').append(output);
+					});
+					
+					//Getting Buttons Data
+					var buttons = getButtons(prevPageToken, nextPageToken, query);
+					
+					//Displaying Buttons
+					$('#buttons').prepend(buttons);
+					
+				}
+		);
+	}
+	
 	//Getting & Creating Buttons
 	function getButtons(prevPageToken, nextPageToken, query){
 		if(!prevPageToken){
