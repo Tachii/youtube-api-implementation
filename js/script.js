@@ -1,3 +1,4 @@
+$(function() {
 	var form = document.getElementById("search-form");
 	var searchField = $('#query');
 	var icon = $('#search-btn');
@@ -210,3 +211,4 @@
 	
 	//Submit Form Search Handler
 	form.addEventListener("submit", search);
+});
