@@ -63,18 +63,62 @@ $(function(){
 		return output;
 	}
 	
+	//Next Page button funciton
+	function nextPage(){
+		//Token for new request, which declares what to load
+		var token = $('#next-button').data('token');
+		
+		//Clear Previous Results
+		$('#results').html('');
+		$('#button').html('');
+		
+		//Get Form Input Value and Define it to a value
+		var query = $('#query').val();
+		
+		//Run Get Request on YouTube API
+		$.get(
+			"https://www.googleapis.com/youtube/v3/search",{
+					part: 'snippet, id',
+					q: query,
+					type:'video',
+					key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'
+				},
+				function(data){
+					var nextPageToken = data.nextPageToken;
+					var prevPageToken = data.prevPageToken;
+					console.log(data);
+					
+					//Loop to process received data
+					$.each(data.items, function(i, item){
+						//Get Output
+						var output = getOutput(item);
+						
+						//Display Results
+						$('#results').append(output);
+					});
+					
+					//Getting Buttons Data
+					var buttons = getButtons(prevPageToken, nextPageToken, query);
+					
+					//Displaying Buttons
+					$('#buttons').prepend(buttons);
+					
+				}
+		);
+	}
+	
 	//Getting & Creating Buttons
-	function getButtons(prevPageToken, nextPageToken, q){
+	function getButtons(prevPageToken, nextPageToken, query){
 		if(!prevPageToken){
 			var btnOutput = 
 			'<div class="button-container">' + 
-				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'" onclick="nextPage();">Next Page</button>' + 				
+				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+query+'" onclick="nextPage();">Next Page</button>' + 				
 			'</div>';
 		} else {
 			var btnOutput = 
 		 	'<div class="button-container">' + 
-		 		'<button id="next-button" class="paging-button" data-token="'+prevPageToken+'" data-query="'+q+'" onclick="prevPage();">Prev Page</button>' + 
-				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'" onclick="nextPage();">Next Page</button>' + 				
+		 		'<button id="prev-button" class="paging-button" data-token="'+prevPageToken+'" data-query="'+query+'" onclick="prevPage();">Prev Page</button>' + 
+				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+query+'" onclick="nextPage();">Next Page</button>' + 				
 			'</div>'; 
 		}
 		
@@ -120,7 +164,6 @@ $(function(){
 					
 				}
 		);
-		
 	}
 	
 	//Submit Form Search Handler
