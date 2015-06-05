@@ -105,5 +105,4 @@ $(function(){
 	form.addEventListener("submit", search);
 	
 	
-	
 });
