@@ -1,4 +1,5 @@
-$(function() {
+$( document ).ready(function() {
+	
 	var form = document.getElementById("search-form");
 	var searchField = $('#query');
 	var icon = $('#search-btn');
