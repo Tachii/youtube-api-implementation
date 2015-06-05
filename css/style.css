@@ -129,7 +129,9 @@ footer{
 .cTitle{
 	color:#DD2826;
 }
-
+#prev-button{
+	margin-right:20px;
+}
 .paging-button{
 	background: #f4f4f4;
 	padding: 8px 13px;
