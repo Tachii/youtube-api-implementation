@@ -6,8 +6,17 @@
         <title>YouSearch</title>
         
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/jquery.fancybox-buttons.css" />
+        <link rel="stylesheet" href="css/jquery.fancybox-thumbs.css" />
+        <link rel="stylesheet" href="css/jquery.fancybox.css" />
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	    
+	    <script src="js/script.js"></script>
+	    <script src="js/jquery.fancybox-buttons.js"></script>
+	    <script src="js/jquery.fancybox-media.js"></script>
+	    <script src="js/jquery.fancybox-thumbs.js"></script>
+	    <script src="js/jquery.fancybox.pack.js"></script>
         
     </head>
     <body>
@@ -31,6 +40,5 @@
         		<p>Copyright &copy; 2015, GZ</p>
         	</footer>
         </div>
-        <script src="js/script.js"></script>
     </body>
 </html>
