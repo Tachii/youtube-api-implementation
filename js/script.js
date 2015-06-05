@@ -30,11 +30,33 @@ $(function(){
 			},400);
 		}
 	});
-	 
 	
+	//Search Function to process query and get results from YouTube Api
+	function search(){
+		//Clear Previous Results
+		$('#results').html('');
+		$('#button').html('');
+		
+		//Get Form Input Value, q will be local variable
+		q = $('#query').val();
+		
+		//Run Get Request on YouTube API
+		$.get(
+			"https://www.googleapis.com/youtube/v3/search",{
+				part: 'snippet, id',
+				q: q,
+				type:'video',
+				key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'},
+				function(data){
+					
+				}
+			}
+		);
+		
+	}
 	
 	//Submit Form Search Handler
-	//form.addEventListener("submit", search);
+	form.addEventListener("submit", search);
 	
 	
 	
