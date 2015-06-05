@@ -65,8 +65,9 @@ $(function(){
 	
 	//Next Page button funciton
 	function nextPage(){
-		//Token for new request, which declares what to load
+		//Token & Query for new request, which declares what to load
 		var token = $('#next-button').data('token');
+		var query = $('#next-button').data('query');
 		
 		//Clear Previous Results
 		$('#results').html('');
@@ -80,6 +81,7 @@ $(function(){
 			"https://www.googleapis.com/youtube/v3/search",{
 					part: 'snippet, id',
 					q: query,
+					pageToken: token,
 					type:'video',
 					key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'
 				},
@@ -138,7 +140,7 @@ $(function(){
 		$.get(
 			"https://www.googleapis.com/youtube/v3/search",{
 					part: 'snippet, id',
-					q: q,
+					q: query,
 					type:'video',
 					key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'
 				},
@@ -160,7 +162,7 @@ $(function(){
 					var buttons = getButtons(prevPageToken, nextPageToken, query);
 					
 					//Displaying Buttons
-					$('#buttons').prepend(buttons);
+					$('#buttons').append(buttons);
 					
 				}
 		);
