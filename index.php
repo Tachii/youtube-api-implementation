@@ -23,8 +23,8 @@
         				<input type="submit" name="search-btn" id="search-btn" value="" />
         			</div>
         			
-        			<ul id="results"></ul>
-        			<div id="button"></div>
+        			<ul id="results"> </ul>
+        			<div id="buttons"> </div>
         		</form>
         	</section>
         	<footer>

@@ -1,7 +1,6 @@
 /**
  * @author Gleb Zaveruha
  */
-"use strict";
 $(function(){
 	
 	
@@ -40,6 +39,7 @@ $(function(){
 	
 	//Funtion to Get Output from API response
 	function getOutput(item){
+		//Assigning Variables
 		var videoId 		= item.id;
 		var title 			= item.snippet.title;
 		var description 	= item.snippet.description;
@@ -60,9 +60,24 @@ $(function(){
 			'</div>' + 
 		'</li>' + 
 		'<div class="clearfix"></div>';
-		
 		return output;
+	}
+	
+	//Getting & Creating Buttons
+	function getButtons(prevPageToken, nextPageToken, q){
+		if(!prevPageToken){
+			var btnOutput = 
+			'<div class="button-container">' + 
+				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'" onclick="nextPage();">Next Page</button>' + 				
+			'</div>';
+		} else {
+			var btnOutput = 
+		 	'<div class="button-container">' + 
+				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'" onclick="nextPage();">Next Page</button>' + 				
+			'</div>'; 
+		}
 		
+		return btnOutput;
 	}
 	
 	//Search Function to process query to YouTube API
@@ -95,6 +110,12 @@ $(function(){
 						//Display Results
 						$('#results').append(output);
 					});
+					
+					//Getting Buttons Data
+					var buttons = getButtons(prevPageToken, nextPageToken, q);
+					
+					//Displaying Buttons
+					$('#buttons').append(buttons);
 					
 				}
 		);
