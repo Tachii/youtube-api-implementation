@@ -73,6 +73,7 @@ $(function(){
 		} else {
 			var btnOutput = 
 		 	'<div class="button-container">' + 
+		 		'<button id="next-button" class="paging-button" data-token="'+prevPageToken+'" data-query="'+q+'" onclick="prevPage();">Prev Page</button>' + 
 				'<button id="next-button" class="paging-button" data-token="'+nextPageToken+'" data-query="'+q+'" onclick="nextPage();">Next Page</button>' + 				
 			'</div>'; 
 		}
@@ -115,7 +116,7 @@ $(function(){
 					var buttons = getButtons(prevPageToken, nextPageToken, q);
 					
 					//Displaying Buttons
-					$('#buttons').append(buttons);
+					$('#buttons').prepend(buttons);
 					
 				}
 		);
