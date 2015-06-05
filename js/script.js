@@ -48,6 +48,10 @@ $(function(){
 				type:'video',
 				key: 'AIzaSyDr3hDprD7yAZzR3dzTKTr9EHyuPUYEKxM'},
 				function(data){
+					var nextPageToken = data.nextPageToken;
+					var prevPageToken = data.prevPageToken;
+					
+					console.log(data);
 					
 				}
 			}
