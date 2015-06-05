@@ -65,7 +65,7 @@ $(function() {
 		var query = $('#next-button').data('query');
 		
 		//Clear Previous Results
-		$('#results').html(' ');
+		$('#results').html('');
 		$('#buttons').html('');
 		
 		//Get Form Input Value and Define it to a value
@@ -172,7 +172,7 @@ $(function() {
 	function search(){
 		//Clear Previous Results
 		$('#results').html('');
-		$('#button').html('');
+		$('#buttons').html('');
 		
 		//Get Form Input Value and Define it to a value
 		var query = $('#query').val();
@@ -210,5 +210,5 @@ $(function() {
 	}
 	
 	//Submit Form Search Handler
-	form.addEventListener("submit", search);
+	form.addEventListener("click", search);
 });
