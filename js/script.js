@@ -97,7 +97,7 @@ function getButtons(prevPageToken, nextPageToken, query){
 //Funtion to Get Output from API response
 function getOutput(item){
 	//Assigning Variables
-	var videoId 		= item.id;
+	var videoId 		= item.id.videoId;
 	var title 			= item.snippet.title;
 	var description 	= item.snippet.description;
 	var thumb 			= item.snippet.thumbnails.high.url;
@@ -108,10 +108,10 @@ function getOutput(item){
 	var output = 
 	'<li>' + 
 		'<div class="list-left">' + 
-			'<img src="'+thumb+'"/>' + 
+			'<a class="fancybox fancybox.iframe" href="http://youtube.com/embed/'+videoId+'""><img src="'+thumb+'"/></a>' + 
 		'</div>' + 
 		'<div class="list-right">' + 
-			'<h3>'+title+'</h3>' + 
+			'<h3><a class="fancybox fancybox.iframe" href="http://youtube.com/embed/'+videoId+'"">"'+title+'</a></h3>' + 
 			'<small> By <span class="cTitle">'+channelTitle+'</span> on '+videoDate+' </small>' + 
 			'<p>'+description+'</p>' + 
 		'</div>' + 
