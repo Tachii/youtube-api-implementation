@@ -17,7 +17,7 @@
         		<p>Search Youtube Videos</p>
         	</header>
         	<section>
-        		<form id="search=form" name="search-form">
+        		<form id="search-form" name="search-form">
         			<div class="field-container">
         				<input type="search" id="query" class="search-field" placeholder="Search..." />
         				<input type="submit" name="search-btn" id="search-btn" value="" />

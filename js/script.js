@@ -9,8 +9,8 @@ $(function(){
 	var searchField = $('#query');
 	var icon = $('#search-btn');
 	
-	//Focus Handler
-	$(searchField).on('focus',function(){
+	//Focus Event Handler
+	$(searchField).on('focusin',function(){
 		$(this).animate({
 			width:'100%'
 		},400);
@@ -19,8 +19,22 @@ $(function(){
 		}, 400);
 	});
 	
-	form.addEventListener("submit", search);
+	//Blur Event Handler
+	$(searchField).on('blur',function(){
+		if(searchField.val() == ''){
+			$(searchField).animate({
+				width:'45%'
+			},400);
+			$(icon).animate({
+				right:'360px'
+			},400);
+		}
+	});
+	 
 	
+	
+	//Submit Form Search Handler
+	//form.addEventListener("submit", search);
 	
 	
 	
